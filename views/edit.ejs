@@ -1,0 +1,134 @@
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #2779e2;
+        }
+    </style>
+    <title>Խմբագրել ուսանողի</title>
+</head>
+
+<body>    
+        <section class="vh-100" style="background-color: #2779e2; margin-bottom: 20%;">
+            <form action="/edit/<%= data["id"] %>" enctype="multipart/form-data" method="post">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-xl-9">
+                            
+                            <h1 class="text-white mb-4">Խմբագրել ուսանողի տվյալները</h1>
+                            <% if (error=="false" ) { %>
+                                <h6 style="color: green; ">Ուսանողը տվյալները հաջողությամբ թարմացվեց։</h6>
+                                <% } %>                      
+                            <div class="card" style="border-radius: 15px;">
+                                <div class="card-body">
+                                    
+                                    <div class="row align-items-center pt-4 pb-3">
+                                        <div class="col-md-3 ps-5">
+                                            <h6 class="mb-0">Անուն</h6>
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+                                            <input type="text" value="<%= data["name"] %>" class="form-control form-control-lg" name="name"
+                                            placeholder="Անուն" required autofocus>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="mx-n3">
+                                    
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+                                            <h6 class="mb-0">Ազգանուն</h6>
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+                                            <input type="text" name="surname"  value="<%= data["surname"] %>" class="form-control form-control-lg" placeholder="Ազգանուն" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="mx-n3">
+                                    
+                                    <div class="row align-items-center pt-4 pb-3">
+                                        <div class="col-md-3 ps-5">
+                                            <h6 class="mb-0">Անձնագրի սերիա</h6>
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+                                            <input type="text" class="form-control form-control-lg" name="passport" placeholder="Անձնագրի սերիա" value="<%= data["passport"] %>" readonly>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="mx-n3">
+                                    
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+                                            <h6 class="mb-0">Բնակության հասցե</h6>
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+                                            <textarea class="form-control" name="address" rows="3"
+                                            placeholder="Բնակության հասցե" required><%= data["address"] %></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="mx-n3">
+                                    
+                                    
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+                                            <h6 class="mb-0">Աշխատանքային կարգավիճակ</h6>
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+                                            <textarea class="form-control" rows="3"
+                                            name="work_status" placeholder="Աշխատանքային կարգավիճակ" required><%= data["workinfo"] %></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="mx-n3">
+                                    
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+                                            
+                                            <h6 class="mb-0">Ուսանողական գրքույք</h6>
+                                            
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+                                            <input class="form-control form-control-lg" type="file" accept="image/png, image/jpeg" name="studentcard"/>
+                                            <div class="small text-muted mt-2">Ներբեռնել ուսանողի ուսանողական գրքույկը այստեղ։</div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                        
+                                    <hr class="mx-n3">
+                                    
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+                                            
+                                            <h6 class="mb-0">Ուսանողի նկար</h6>
+                                            
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+                                            <input class="form-control form-control-lg" type="file" value="Նկար" id="avatar" name="profilepicture" accept="image/png, image/jpeg">
+                                            <div class="small text-muted mt-2">Ներբեռնել ուսանողի նկարը այստեղ։</div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <hr class="mx-n3">
+                                    
+                                    <div class="px-5 py-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">Թարմացնել</button>
+                                        <a href="/home" style="color:white;" class="btn btn-info btn-lg " role="button" aria-pressed="true">Վերադառնալ</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+</body>
+
+</html>
